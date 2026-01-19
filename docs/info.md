@@ -1,20 +1,16 @@
-<!---
-
-This file is used to generate your project datasheet. Please fill in the information below and delete any unused
-sections.
-
-You can also include images in this folder and reference them in the markdown. Each image must be less than
-512 kb in size, and the combined size of all images must be less than 1 MB.
--->
-
 ## How it works
 
-Explain how your project works
+This is a two-stage Operational Amplifier designed using SkyWater 130nm technology.
+It features a differential input stage with active load and a common-source output stage with Miller compensation.
+The design is optimized for a 1.8V supply voltage and drives a 2pF capacitive load.
 
 ## How to test
 
-Explain how to use your project
+1. **Power Supply:** Connect 1.8V to VDPWR and 0V to VGND.
+2. **Bias:** Connect a 10uA current source to the Ibias pin (ua[3]).
+3. **Input:** Apply differential or single-ended signals to Vin+ (ua[0]) and Vin- (ua[1]).
+4. **Output:** Measure the output signal at Vout (ua[2]).
 
 ## External hardware
 
-List external hardware used in your project (e.g. PMOD, LED display, etc), if any
+None required, other than standard laboratory equipment (Power Supply, Signal Generator, Oscilloscope).
