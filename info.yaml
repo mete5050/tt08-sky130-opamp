@@ -9,7 +9,7 @@ project:
 
   # En Kritik Yer: Top Module İsmi
   # Magic'teki hücre adınla VE GDS dosyanın içindeki isimle AYNI olmalı.
-  top_module:  "tt_um_abdullahaltepe_opamp"
+  top_module:  "tt_um_mete_opamp"
 
   # Pin Eşleşmeleri (Senin OpAmp uçların dış dünyaya nasıl bağlanacak?)
   # Tiny Tapeout'ta analog pinler ua[0] ile ua[5] arasındadır.
