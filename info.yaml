@@ -9,15 +9,15 @@ project:
   language:     "Analog"
   clock_hz:     0
   
-  # TT08 ve sonrası için zorunlu olan Tile boyutu (Genelde 1x1)
+  # İŞTE EKSİK OLAN VE HATAYI ÇÖZEN SATIR BURASI:
   tiles: "1x1"
 
-  # Magic ve GDS dosyanın ismiyle birebir aynı olmalı
+  # Magic ve GDS dosyanın ismiyle (uzantısız) AYNI olmalı:
   top_module:  "tt_um_mete_opamp"
 
-  # Analog Pin Eşleşmeleri
+  # Pin Eşleşmeleri
   pin_out:
-    # Analog pinler (ua)
+    # Analog Pinler
     ua[0]: "Vin+ (Non-inverting Input)"
     ua[1]: "Vin- (Inverting Input)"
     ua[2]: "Vout (Output)"
@@ -25,7 +25,7 @@ project:
     ua[4]: "not used"
     ua[5]: "not used"
     
-    # Dijital/Kontrol pinleri (Analog projede kullanılmaz ama tanımlı olmalı)
+    # Dijital Pinler (Hata vermemesi için tanımlı olmalı)
     uio[0]: "not used"
     uio[1]: "not used"
     uio[2]: "not used"
@@ -35,25 +35,18 @@ project:
     uio[6]: "not used"
     uio[7]: "not used"
 
-# Documentation (Otomatik oluşturulan dokümanlar için)
+# Dokümantasyon Bloğu (Docs check hatası almamak için)
 documentation:
   author:       "MeteEKER"
   title:        "Two-Stage OpAmp Sky130"
   language:     "Analog"
-  description:  "A high-speed, low-power two-stage operational amplifier designed using SkyWater 130nm technology for Tiny Tapeout."
+  description:  "A high-speed, low-power two-stage operational amplifier."
 
-  # How it works bölümü
   how_it_works: |
       This is a two-stage Operational Amplifier with Miller compensation.
-      The first stage is a differential pair with active load, and the second stage is a common-source amplifier.
-      It is designed to drive a 2pF load with high gain and stability.
+      Designed for 1.8V supply and 2pF load.
 
-  # How to test bölümü
   how_to_test:  |
-      1. Connect VDD to 1.8V and VSS to GND.
-      2. Apply a 10uA bias current to the Ibias pin (ua[3]).
-      3. Connect inputs to Vin+ (ua[0]) and Vin- (ua[1]).
-      4. Measure the output at Vout (ua[2]).
+      Apply bias current to ua[3], input signal to ua[0]/ua[1], and measure output at ua[2].
 
-  # External hardware
   external_hw:  "None"
