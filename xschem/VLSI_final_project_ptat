@@ -1,0 +1,208 @@
+v {xschem version=3.1.0 file_version=1.2 }
+G {}
+K {}
+V {}
+S {}
+E {}
+N 0 60 0 80 {
+lab=#net1}
+N 0 -20 0 0 {
+lab=#net2}
+N 0 140 0 160 {
+lab=GND}
+N 40 30 60 30 {
+lab=#net2}
+N 40 -50 60 -50 {
+lab=#net3}
+N 0 -100 0 -80 {
+lab=#net4}
+N 0 -100 100 -100 {
+lab=#net4}
+N 100 -100 100 -80 {
+lab=#net4}
+N 100 -20 100 -10 {
+lab=#net3}
+N 100 -10 100 0 {
+lab=#net3}
+N 50 -60 50 -50 {
+lab=#net3}
+N 100 -50 110 -50 {
+lab=#net4}
+N 110 -100 110 -50 {
+lab=#net4}
+N -10 -50 0 -50 {
+lab=#net4}
+N -10 -100 -10 -50 {
+lab=#net4}
+N -10 -100 0 -100 {
+lab=#net4}
+N 50 -50 50 -20 {
+lab=#net3}
+N 50 -20 100 -20 {
+lab=#net3}
+N 0 0 50 0 {
+lab=#net2}
+N 50 0 50 30 {
+lab=#net2}
+N 0 70 40 70 {
+lab=#net1}
+N 40 70 40 110 {
+lab=#net1}
+N 100 60 100 80 {
+lab=#net5}
+N 100 140 100 160 {
+lab=GND}
+N -10 30 0 30 {
+lab=GND}
+N -10 30 -10 110 {
+lab=GND}
+N -10 110 0 110 {
+lab=GND}
+N -10 110 0 110 {
+lab=GND}
+N -10 110 -10 160 {
+lab=GND}
+N -10 160 -0 160 {
+lab=GND}
+N 100 30 110 30 {
+lab=GND}
+N 110 30 110 160 {
+lab=GND}
+N 80 110 80 150 {
+lab=GND}
+N 80 150 100 150 {
+lab=GND}
+N 160 -60 160 -50 {
+lab=#net3}
+N 200 -100 200 -80 {
+lab=#net4}
+N 200 -50 210 -50 {
+lab=#net4}
+N 210 -100 210 -50 {
+lab=#net4}
+N 200 -100 210 -100 {
+lab=#net4}
+N -10 -120 -10 -100 {
+lab=#net4}
+N 200 -20 200 0 {
+lab=#net6}
+N 200 60 200 160 {
+lab=GND}
+N 50 -60 160 -60 {
+lab=#net3}
+N 100 -100 200 -100 {
+lab=#net4}
+N 100 160 200 160 {
+lab=GND}
+N 0 160 100 160 {
+lab=GND}
+C {sky130_fd_pr/nfet_01v8.sym} 20 30 0 1 {name=M1
+L=0.36
+W=3.6
+nf=1 
+mult=1
+ad="'int((nf+1)/2) * W/nf * 0.29'" 
+pd="'2*int((nf+1)/2) * (W/nf + 0.29)'"
+as="'int((nf+2)/2) * W/nf * 0.29'" 
+ps="'2*int((nf+2)/2) * (W/nf + 0.29)'"
+nrd="'0.29 / W'" nrs="'0.29 / W'"
+sa=0 sb=0 sd=0
+model=nfet_01v8
+spiceprefix=X
+}
+C {sky130_fd_pr/nfet_01v8.sym} 20 110 0 1 {name=M2
+L=0.36
+W=3.6
+nf=1 
+mult=1
+ad="'int((nf+1)/2) * W/nf * 0.29'" 
+pd="'2*int((nf+1)/2) * (W/nf + 0.29)'"
+as="'int((nf+2)/2) * W/nf * 0.29'" 
+ps="'2*int((nf+2)/2) * (W/nf + 0.29)'"
+nrd="'0.29 / W'" nrs="'0.29 / W'"
+sa=0 sb=0 sd=0
+model=nfet_01v8
+spiceprefix=X
+}
+C {sky130_fd_pr/nfet_01v8.sym} 80 30 0 0 {name=M3
+L=0.36
+W=3.6
+nf=1 
+mult=8
+ad="'int((nf+1)/2) * W/nf * 0.29'" 
+pd="'2*int((nf+1)/2) * (W/nf + 0.29)'"
+as="'int((nf+2)/2) * W/nf * 0.29'" 
+ps="'2*int((nf+2)/2) * (W/nf + 0.29)'"
+nrd="'0.29 / W'" nrs="'0.29 / W'"
+sa=0 sb=0 sd=0
+model=nfet_01v8
+spiceprefix=X
+}
+C {sky130_fd_pr/pfet_01v8.sym} 20 -50 0 1 {name=M4
+L=0.36
+W=7.2
+nf=1
+mult=1
+ad="'int((nf+1)/2) * W/nf * 0.29'" 
+pd="'2*int((nf+1)/2) * (W/nf + 0.29)'"
+as="'int((nf+2)/2) * W/nf * 0.29'" 
+ps="'2*int((nf+2)/2) * (W/nf + 0.29)'"
+nrd="'0.29 / W'" nrs="'0.29 / W'"
+sa=0 sb=0 sd=0
+model=pfet_01v8
+spiceprefix=X
+}
+C {sky130_fd_pr/pfet_01v8.sym} 80 -50 0 0 {name=M5
+L=0.36
+W=7.2
+nf=1
+mult=1
+ad="'int((nf+1)/2) * W/nf * 0.29'" 
+pd="'2*int((nf+1)/2) * (W/nf + 0.29)'"
+as="'int((nf+2)/2) * W/nf * 0.29'" 
+ps="'2*int((nf+2)/2) * (W/nf + 0.29)'"
+nrd="'0.29 / W'" nrs="'0.29 / W'"
+sa=0 sb=0 sd=0
+model=pfet_01v8
+spiceprefix=X
+}
+C {sky130_fd_pr/pfet_01v8.sym} 180 -50 0 0 {name=M6
+L=0.36
+W=7.2
+nf=1
+mult=1
+ad="'int((nf+1)/2) * W/nf * 0.29'" 
+pd="'2*int((nf+1)/2) * (W/nf + 0.29)'"
+as="'int((nf+2)/2) * W/nf * 0.29'" 
+ps="'2*int((nf+2)/2) * (W/nf + 0.29)'"
+nrd="'0.29 / W'" nrs="'0.29 / W'"
+sa=0 sb=0 sd=0
+model=pfet_01v8
+spiceprefix=X
+}
+C {devices/gnd.sym} 0 160 0 0 {name=l1 lab=GND}
+C {sky130_fd_pr/res_xhigh_po_0p35.sym} 100 110 0 0 {name=R10
+W=0.35
+L=16
+model=res_xhigh_po_0p35
+spiceprefix=X
+ mult=1}
+C {devices/vsource.sym} 20 -120 3 0 {name=VDD value=1.8}
+C {devices/gnd.sym} 50 -120 0 0 {name=l2 lab=GND}
+C {devices/vsource.sym} 200 30 0 0 {name=V1 value=0}
+C {devices/code.sym} 320 -110 0 0 {name=TT_MODELS
+only_toplevel=true
+format="tcleval( @value )"
+value="
+** opencircuitdesign pdks install
+.lib $::SKYWATER_MODELS/sky130.lib.spice tt_mm
+
+"
+spice_ignore=false}
+C {devices/code_shown.sym} 280 40 0 0 {name=s1 only_toplevel=false value="
+.control 
+save all
+dc temp -40 120 1
+plot i(V1) title 'PTAT Current vs Temp'
+.endc
+"}
