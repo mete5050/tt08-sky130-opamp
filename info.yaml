@@ -1,52 +1,66 @@
 # Tiny Tapeout project information
-yaml_version: 6
-
 project:
-  title:        "Two-Stage OpAmp Sky130"
-  author:       "MeteEKER"
-  discord:      "mete5050"
-  description:  "A high-speed, low-power two-stage operational amplifier designed using SkyWater 130nm technology for Tiny Tapeout."
-  language:     "Analog"
-  clock_hz:     0
-  
-  # İŞTE EKSİK OLAN VE HATAYI ÇÖZEN SATIR BURASI:
-  tiles: "1x1"
+  title:        "Two-Stage OpAmp Sky130"      # Proje adı
+  author:       "MeteEKER"                    # Senin adın
+  discord:      "mete5050"                    # Discord adın
+  description:  "A high-speed, low-power two-stage operational amplifier designed using SkyWater 130nm technology."
+  language:     "Analog"                      # Analog kalmalı
+  clock_hz:     0                             # 0 kalmalı
 
-  # Magic ve GDS dosyanın ismiyle (uzantısız) AYNI olmalı:
+  # Şablonda Analog projeler için geçerli değerler 1x2 veya 2x2 denmiş.
+  # Senin tasarımın küçük ama kurala uymak için 1x2 seçiyoruz.
+  tiles: "1x2"
+
+  # Bizim projemiz 4 analog pin kullanıyor (Vin+, Vin-, Vout, Ibias)
+  analog_pins: 4
+  uses_3v3: false
+
+  # DİKKAT: Burası GDS dosyanın ismiyle (uzantısız) AYNI OLMALI
   top_module:  "tt_um_mete_opamp"
 
-  # Pin Eşleşmeleri
-  pin_out:
-    # Analog Pinler
-    ua[0]: "Vin+ (Non-inverting Input)"
-    ua[1]: "Vin- (Inverting Input)"
-    ua[2]: "Vout (Output)"
-    ua[3]: "Ibias (Bias Current Input)"
-    ua[4]: "not used"
-    ua[5]: "not used"
-    
-    # Dijital Pinler (Hata vermemesi için tanımlı olmalı)
-    uio[0]: "not used"
-    uio[1]: "not used"
-    uio[2]: "not used"
-    uio[3]: "not used"
-    uio[4]: "not used"
-    uio[5]: "not used"
-    uio[6]: "not used"
-    uio[7]: "not used"
+  # Kaynak dosyası (Şablondaki boş dosya kalabilir)
+  source_files:
+    - "project.v"
 
-# Dokümantasyon Bloğu (Docs check hatası almamak için)
-documentation:
-  author:       "MeteEKER"
-  title:        "Two-Stage OpAmp Sky130"
-  language:     "Analog"
-  description:  "A high-speed, low-power two-stage operational amplifier."
+# Pin Tanımları (Boş olanları "" olarak bırakıyoruz)
+pinout:
+  # Inputs (Dijital girişler boş)
+  ui[0]: ""
+  ui[1]: ""
+  ui[2]: ""
+  ui[3]: ""
+  ui[4]: ""
+  ui[5]: ""
+  ui[6]: ""
+  ui[7]: ""
 
-  how_it_works: |
-      This is a two-stage Operational Amplifier with Miller compensation.
-      Designed for 1.8V supply and 2pF load.
+  # Outputs (Dijital çıkışlar boş)
+  uo[0]: ""
+  uo[1]: ""
+  uo[2]: ""
+  uo[3]: ""
+  uo[4]: ""
+  uo[5]: ""
+  uo[6]: ""
+  uo[7]: ""
 
-  how_to_test:  |
-      Apply bias current to ua[3], input signal to ua[0]/ua[1], and measure output at ua[2].
+  # Bidirectional pins (Dijital IO boş)
+  uio[0]: ""
+  uio[1]: ""
+  uio[2]: ""
+  uio[3]: ""
+  uio[4]: ""
+  uio[5]: ""
+  uio[6]: ""
+  uio[7]: ""
 
-  external_hw:  "None"
+  # Analog pins (Bizim kullandıklarımız)
+  ua[0]: "Vin+ (Non-inverting Input)"
+  ua[1]: "Vin- (Inverting Input)"
+  ua[2]: "Vout (Output)"
+  ua[3]: "Ibias (Bias Current Input)"
+  ua[4]: ""
+  ua[5]: ""
+
+# Do not change!
+yaml_version: 6
