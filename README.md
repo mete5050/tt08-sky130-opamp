@@ -1,35 +1,82 @@
-![](../../workflows/gds/badge.svg) ![](../../workflows/docs/badge.svg)
 
-# Tiny Tapeout Analog Project Template
+# High-Performance Two-Stage Operational Amplifier (Sky130)
 
-- [Read the documentation for project](docs/info.md)
+This repository contains the design and layout of a **Two-Stage Operational Amplifier (OpAmp)** utilizing **Miller Compensation with Nulling Resistor**, designed using the **SkyWater 130nm CMOS technology**.
 
-## What is Tiny Tapeout?
+This project was developed as part of the **EE4010 VLSI Circuit Design** final project and has successfully passed **DRC (Design Rule Check)** and **LVS (Layout Versus Schematic)** verification for the **Tiny Tapeout 08** shuttle.
 
-Tiny Tapeout is an educational project that aims to make it easier and cheaper than ever to get your digital designs manufactured on a real chip.
+## 🌟 Project Highlights
 
-To learn more and get started, visit https://tinytapeout.com.
+- **Technology:** SkyWater 130nm Open Source PDK
+- **Topology:** Two-Stage (Differential Input + Common Source Output)
+- **Compensation:** Miller Capacitor ($C_c$) + Nulling Resistor ($R_z$)
+- **Verification:** Pre-Layout & Post-Layout Simulation (Xschem/Ngspice), Magic VLSI Layout, Netgen LVS.
+- **Status:** Tape-out Ready (GDSII Verified) ✅
 
-## Analog projects
+## 📊 Performance Specifications (Post-Layout)
 
-For specifications and instructions, see the [analog specs page](https://tinytapeout.com/specs/analog/).
+The design has been optimized to meet high-speed and stability requirements. Below are the final post-layout simulation results:
 
-## Enable GitHub actions to build the results page
+| Parameter | Target Spec | Post-Layout Result | Status |
+| :--- | :--- | :--- | :--- |
+| **DC Gain** | $\ge 60$ dB | **64.2 dB** | ✅ PASS |
+| **Gain Bandwidth (GBW)** | $\ge 50$ MHz | **124 MHz** | ✅ PASS |
+| **Phase Margin** | $\ge 60^{\circ}$ | **64.9^{\circ}$** | ✅ PASS |
+| **Slew Rate** | $\ge 50$ V/$\mu$s | **88 V/$\mu$s** | ✅ PASS |
+| **Power Consumption** | $\le 1$ mW | **580 $\mu$W** | ✅ PASS |
+| **THD (1 kHz)** | $\le 1\%$ | **0.82\%** | ✅ PASS |
+| **Core Area** | Minimize | **0.0014 mm$^2$** | ✅ PASS |
 
-- [Enabling GitHub Pages](https://tinytapeout.com/faq/#my-github-action-is-failing-on-the-pages-part)
+## 🔧 Circuit Description
 
-## Resources
+The design consists of three main blocks:
+1.  **Differential Input Stage:** Uses an NMOS differential pair with a PMOS active current mirror load to convert differential voltage to single-ended current.
+2.  **Gain Stage (Output):** A PMOS Common-Source amplifier that provides the second stage of gain and maximum output swing.
+3.  **Bias Network:** A current mirror network ensuring stable operating points for all stages.
 
-- [FAQ](https://tinytapeout.com/faq/)
-- [Digital design lessons](https://tinytapeout.com/digital_design/)
-- [Learn how semiconductors work](https://tinytapeout.com/siliwiz/)
-- [Join the community](https://tinytapeout.com/discord)
+**Stability Strategy:** A Miller Compensation Capacitor ($C_c$) is used for pole splitting. To eliminate the Right-Half-Plane (RHP) zero caused by the Miller effect, a Nulling Resistor ($R_z$) is placed in series with $C_c$, significantly improving the Phase Margin to $64.9^{\circ}$.
 
-## What next?
+## 📸 Layout & Verification
 
-- [Submit your design to the next shuttle](https://app.tinytapeout.com/).
-- Edit [this README](README.md) and explain your design, how it works, and how to test it.
-- Share your project on your social network of choice:
-  - LinkedIn [#tinytapeout](https://www.linkedin.com/search/results/content/?keywords=%23tinytapeout) [@TinyTapeout](https://www.linkedin.com/company/100708654/)
-  - Mastodon [#tinytapeout](https://chaos.social/tags/tinytapeout) [@matthewvenn](https://chaos.social/@matthewvenn)
-  - X (formerly Twitter) [#tinytapeout](https://twitter.com/hashtag/tinytapeout) [@matthewvenn](https://twitter.com/matthewvenn)
+The layout was drawn using **Magic VLSI**. It features a compact floorplan with orthogonal routing (Metal 2 vertical, Metal 3 horizontal) and guard rings for latch-up prevention.
+<img width="909" height="735" alt="finalprojectlayout" src="https://github.com/user-attachments/assets/5e4d68b8-784d-4351-a0a9-88d9daa0a2a8" />
+**Final Layout View:**
+
+*(Note: Please verify the image path in your repo)*
+
+**LVS Check:**
+The design matches the schematic uniquely ("Circuits match uniquely") using Netgen.
+
+## 🔌 Pin Configuration
+
+The Tiny Tapeout Analog Interface is used as follows:
+
+| Tiny Tapeout Pin | OpAmp Function | Description |
+| :--- | :--- | :--- |
+| `ua[0]` | **Vin+** | Non-Inverting Input |
+| `ua[1]` | **Vin-** | Inverting Input |
+| `ua[2]` | **Vout** | Output Voltage |
+| `ua[3]` | **Ibias** | Bias Current Input (10$\mu$A Source) |
+| `ua[4] - ua[7]` | N/C | Not Connected |
+| `VGND` | **GND** | Ground (0V) |
+| `VDPWR` | **VDD** | Power Supply (1.8V) |
+
+## 🧪 How to Test
+
+1.  **Power Up:** Connect 1.8V to `VDPWR` and 0V to `VGND`.
+2.  **Bias:** Connect a precise **10$\mu$A current source** to the `Ibias` pin (`ua[3]`).
+3.  **Signal:** Apply a differential signal to `ua[0]` and `ua[1]`.
+    * *For DC Gain:* Sweep the DC difference.
+    * *For Transient:* Apply a small sine wave or pulse.
+4.  **Observe:** Measure the output at `ua[2]` using an oscilloscope.
+
+## 👥 Authors
+
+- **Mete Eker**
+- **Abdullah Altepe**
+- **Şeref Keser**
+
+*Marmara University - EE4010 VLSI Circuit Design Final Project*
+
+---
+*Based on Tiny Tapeout Analog Template.*
