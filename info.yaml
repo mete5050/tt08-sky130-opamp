@@ -1,26 +1,59 @@
-yaml_version: 6
 # Tiny Tapeout project information
-project:
-  title:        "Two-Stage OpAmp Sky130"      # Proje adı
-  author:       "MeteEKER"             # Senin adın
-  discord:      "mete5050"             # Varsa discord adın (opsiyonel)
-  description:  "A high-speed, low-power two-stage operational amplifier designed..."
-  language:     "Analog"                      # Burası Analog kalmalı
-  clock_hz:     0                             # Analog olduğu için 0
+yaml_version: 6
 
-  # En Kritik Yer: Top Module İsmi
-  # Magic'teki hücre adınla VE GDS dosyanın içindeki isimle AYNI olmalı.
+project:
+  title:        "Two-Stage OpAmp Sky130"
+  author:       "MeteEKER"
+  discord:      "mete5050"
+  description:  "A high-speed, low-power two-stage operational amplifier designed using SkyWater 130nm technology for Tiny Tapeout."
+  language:     "Analog"
+  clock_hz:     0
+  
+  # TT08 ve sonrası için zorunlu olan Tile boyutu (Genelde 1x1)
+  tiles: "1x1"
+
+  # Magic ve GDS dosyanın ismiyle birebir aynı olmalı
   top_module:  "tt_um_mete_opamp"
 
-  # Pin Eşleşmeleri (Senin OpAmp uçların dış dünyaya nasıl bağlanacak?)
-  # Tiny Tapeout'ta analog pinler ua[0] ile ua[5] arasındadır.
-  # OpAmp için örnek bir eşleşme:
+  # Analog Pin Eşleşmeleri
   pin_out:
-    # uio[0] - uio[7] genelde dijital/kontrol içindir, analogda kullanılmazsa "not used" yaz.
-    # ua (Analog) pinleri:
+    # Analog pinler (ua)
     ua[0]: "Vin+ (Non-inverting Input)"
     ua[1]: "Vin- (Inverting Input)"
     ua[2]: "Vout (Output)"
     ua[3]: "Ibias (Bias Current Input)"
     ua[4]: "not used"
     ua[5]: "not used"
+    
+    # Dijital/Kontrol pinleri (Analog projede kullanılmaz ama tanımlı olmalı)
+    uio[0]: "not used"
+    uio[1]: "not used"
+    uio[2]: "not used"
+    uio[3]: "not used"
+    uio[4]: "not used"
+    uio[5]: "not used"
+    uio[6]: "not used"
+    uio[7]: "not used"
+
+# Documentation (Otomatik oluşturulan dokümanlar için)
+documentation:
+  author:       "MeteEKER"
+  title:        "Two-Stage OpAmp Sky130"
+  language:     "Analog"
+  description:  "A high-speed, low-power two-stage operational amplifier designed using SkyWater 130nm technology for Tiny Tapeout."
+
+  # How it works bölümü
+  how_it_works: |
+      This is a two-stage Operational Amplifier with Miller compensation.
+      The first stage is a differential pair with active load, and the second stage is a common-source amplifier.
+      It is designed to drive a 2pF load with high gain and stability.
+
+  # How to test bölümü
+  how_to_test:  |
+      1. Connect VDD to 1.8V and VSS to GND.
+      2. Apply a 10uA bias current to the Ibias pin (ua[3]).
+      3. Connect inputs to Vin+ (ua[0]) and Vin- (ua[1]).
+      4. Measure the output at Vout (ua[2]).
+
+  # External hardware
+  external_hw:  "None"
