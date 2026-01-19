@@ -1,3 +1,4 @@
+yaml_version: 6
 # Tiny Tapeout project information
 project:
   title:        "Two-Stage OpAmp Sky130"      # Proje adı
