@@ -1,65 +1,25 @@
 # Tiny Tapeout project information
 project:
-  title:        ""      # Project title
-  author:       ""      # Your name
-  discord:      ""      # Your discord username, for communication and automatically assigning you a Tapeout role (optional)
-  description:  ""      # One line description of what your project does
-  language:     "Analog" # other examples include Verilog, Amaranth, VHDL, etc
-  clock_hz:     0       # Clock frequency in Hz (or 0 if not applicable)
+  title:        "Two-Stage OpAmp Sky130"      # Proje adı
+  author:       "MeteEKER"             # Senin adın
+  discord:      "mete5050"             # Varsa discord adın (opsiyonel)
+  description:  "A high-speed, low-power two-stage operational amplifier designed..."
+  language:     "Analog"                      # Burası Analog kalmalı
+  clock_hz:     0                             # Analog olduğu için 0
 
-  # How many tiles your design occupies? A single tile is about 167x108 uM.
-  tiles: "1x2"          # Valid values for analog projects: 1x2, 2x2
+  # En Kritik Yer: Top Module İsmi
+  # Magic'teki hücre adınla VE GDS dosyanın içindeki isimle AYNI olmalı.
+  top_module:  "tt_um_abdullahaltepe_opamp"
 
-  # How many analog pins does your project use?
-  analog_pins: 2        # Valid values: 0 to 6
-  uses_3v3: false       # Set to true if your project uses 3.3V (VAPWR) in addition to 1.8V (VDPWR)
-
-  # Your top module name must start with "tt_um_". Make it unique by including your github username:
-  top_module:  "tt_um_example"
-
-  # List your project's source files here. Source files must be in ./src and you must list each source file separately, one per line:
-  source_files:        
-    - "project.v"
-
-# The pinout of your project. Leave unused pins blank. DO NOT delete or add any pins.
-pinout:
-  # Inputs
-  ui[0]: ""
-  ui[1]: ""
-  ui[2]: ""
-  ui[3]: ""
-  ui[4]: ""
-  ui[5]: ""
-  ui[6]: ""
-  ui[7]: ""
-
-  # Outputs
-  uo[0]: ""
-  uo[1]: ""
-  uo[2]: ""
-  uo[3]: ""
-  uo[4]: ""
-  uo[5]: ""
-  uo[6]: ""
-  uo[7]: ""
-
-  # Bidirectional pins
-  uio[0]: ""
-  uio[1]: ""
-  uio[2]: ""
-  uio[3]: ""
-  uio[4]: ""
-  uio[5]: ""
-  uio[6]: ""
-  uio[7]: ""
-
-  # Analog pins - make sure to also set "analog_pins" above, else the pins won't be connected
-  ua[0]: ""
-  ua[1]: ""
-  ua[2]: ""
-  ua[3]: ""
-  ua[4]: ""
-  ua[5]: ""
-
-# Do not change!
-yaml_version: 6
+  # Pin Eşleşmeleri (Senin OpAmp uçların dış dünyaya nasıl bağlanacak?)
+  # Tiny Tapeout'ta analog pinler ua[0] ile ua[5] arasındadır.
+  # OpAmp için örnek bir eşleşme:
+  pin_out:
+    # uio[0] - uio[7] genelde dijital/kontrol içindir, analogda kullanılmazsa "not used" yaz.
+    # ua (Analog) pinleri:
+    ua[0]: "Vin+ (Non-inverting Input)"
+    ua[1]: "Vin- (Inverting Input)"
+    ua[2]: "Vout (Output)"
+    ua[3]: "Ibias (Bias Current Input)"
+    ua[4]: "not used"
+    ua[5]: "not used"
