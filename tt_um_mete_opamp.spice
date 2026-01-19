@@ -1,4 +1,4 @@
-* NGSPICE file created from VLSI_final_project_PSRR.ext - technology: sky130B
+* NGSPICE file created from tt_um_mete_opamp.ext - technology: sky130B
 
 .subckt sky130_fd_pr__pfet_01v8_CYNCWQ a_2386_595# a_498_595# a_2622_595# a_n2098_595#
 + a_n446_595# a_734_595# a_n2334_595# a_1796_595# a_n1744_595# a_n3396_595# a_2032_595#
@@ -162,7 +162,7 @@ X3 a_358_n564# a_158_n661# a_100_n564# w_n710_n664# sky130_fd_pr__pfet_01v8 ad=0
 X4 a_100_n564# a_n100_n661# a_n158_n564# w_n710_n664# sky130_fd_pr__pfet_01v8 ad=0p pd=0u as=0p ps=0u w=6e+06u l=1e+06u
 .ends
 
-.subckt VLSI_final_project_PSRR Vin- Vin+ Ptatin GND Vout VDD
+.subckt tt_um_mete_opamp Vin- Vin+ Ptatin GND Vout VDD
 XXM14 m1_n980_9640# m1_n980_9640# m1_n980_9640# m1_n980_9640# m1_n980_9640# m1_n980_9640#
 + m1_n980_9640# m1_n980_9640# m1_n980_9640# m1_n980_9640# m1_n980_9640# m1_n980_9640#
 + m1_n980_9640# m1_n980_9640# m1_n980_9640# m1_n980_9640# m1_n980_9640# m1_n980_9640#
